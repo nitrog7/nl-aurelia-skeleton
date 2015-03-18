@@ -5,10 +5,10 @@ var modRewrite = require('connect-modrewrite');
 var express = require('express');
 var path = require('path');
 
-// this task utilizes the browsersync plugin
+// This task utilizes the browsersync plugin
 // to create a dev server instance
 // at http://localhost:[port]
-gulp.task('server:dev', ['build:dev'], function(done) {
+gulp.task('browser-sync', ['build:dev'], function(done) {
   browserSync({
     open: false,
     port: config.port,
@@ -31,7 +31,22 @@ gulp.task('server:dev', ['build:dev'], function(done) {
   }, done);
 });
 
-// run express server
+// Outputs changes to files to the console
+function reportChange(event){
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+}
+
+// This task wil watch for changes
+// to js, html, and css files and call the
+// reportChange method. Also, by depending on the
+// serve task, it will instantiate a browserSync session
+gulp.task('server:dev', ['browser-sync'], function() {
+  gulp.watch(config.path.src.js, ['js:dev', browserSync.reload]).on('change', reportChange);
+  gulp.watch(config.path.src.html, ['html:dev', browserSync.reload]).on('change', reportChange);
+  gulp.watch(config.path.src.less, ['css:dev', browserSync.reload]).on('change', reportChange);
+});
+
+// Run express server
 gulp.task('server:prod', ['build:prod'], function() {
   var app = express();
   var server = require('http').Server(app);
