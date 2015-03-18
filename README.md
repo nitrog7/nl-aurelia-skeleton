@@ -58,7 +58,7 @@ All source files will be minified, comments will be stripped, and [Express](http
 * To run in debug mode, execute the following command:
 
   ```shell
-  gulp server:prod
+  gulp server:release
   ```
 * Browse to [http://localhost:9000](http://localhost:9000) to see the app.
 
