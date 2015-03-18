@@ -1,7 +1,10 @@
 'use strict';
 
 module.exports = {
-  port: 9000,
+  port: {
+    dev: 9000,
+    release: 9000
+  },
   index: 'index.html',
 
   path: {

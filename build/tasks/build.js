@@ -20,15 +20,15 @@ gulp.task('build:dev', function(callback) {
   );
 });
 
-// Production Build:
-gulp.task('build:prod', function(callback) {
+// Release Build:
+gulp.task('build:release', function(callback) {
   return runSequence(
     'clean',
     [
       'config:copy',
-      'js:prod',
-      'css:prod',
-      'html:prod'
+      'js:release',
+      'css:release',
+      'html:release'
     ],
     callback
   );

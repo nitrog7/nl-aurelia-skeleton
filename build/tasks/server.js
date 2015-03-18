@@ -11,7 +11,7 @@ var path = require('path');
 gulp.task('browser-sync', ['build:dev'], function(done) {
   browserSync({
     open: false,
-    port: config.port,
+    port: config.port.dev,
     server: {
       baseDir: config.path.dist.dir,
       index: config.index,
@@ -47,7 +47,7 @@ gulp.task('server:dev', ['browser-sync'], function() {
 });
 
 // Run express server
-gulp.task('server:prod', ['build:prod'], function() {
+gulp.task('server:release', ['build:release'], function() {
   var app = express();
   var server = require('http').Server(app);
 
@@ -58,7 +58,7 @@ gulp.task('server:prod', ['build:prod'], function() {
     res.sendFile(path.resolve(config.path.dist.dir + '/' + config.index));
   });
 
-  server.listen(config.port, function() {
+  server.listen(config.port.release, function() {
     console.log('Listening on port %d', server.address().port);
   });
 });

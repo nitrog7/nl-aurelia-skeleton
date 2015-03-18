@@ -17,7 +17,7 @@ gulp.task('css:dev', function() {
     .pipe(gulp.dest(config.path.dist.css));
 });
 
-gulp.task('css:prod', function() {
+gulp.task('css:release', function() {
   return gulp.src(config.path.src.less)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(less({compress: true}))

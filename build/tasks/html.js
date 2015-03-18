@@ -16,7 +16,7 @@ gulp.task('html:dev', function() {
     .pipe(gulp.dest(config.path.dist.dir));
 });
 
-gulp.task('html:prod', function() {
+gulp.task('html:release', function() {
   return gulp.src(config.path.src.html)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(htmlhint(config.htmlhint))

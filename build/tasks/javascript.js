@@ -25,7 +25,7 @@ gulp.task('js:dev', function() {
     .pipe(gulp.dest(config.path.dist.dir));
 });
 
-gulp.task('js:prod', function() {
+gulp.task('js:release', function() {
   return gulp.src(config.path.src.js)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(jshint({lookup:true}))
