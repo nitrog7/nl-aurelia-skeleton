@@ -35,6 +35,13 @@ module.exports = {
     }
   },
 
+  autoprefixer: [
+    'last 5 Chrome versions',
+    'last 5 Firefox versions',
+    'last 2 Safari versions',
+    'Explorer >= 11'
+  ],
+
   htmlhint: {
     'doctype-first': false,
     'tag-pair': false,

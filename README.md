@@ -36,7 +36,7 @@ To setup the app, follow these steps.
 ## Run in Developer Mode
 
 This debugger task will run [BrowserSync](http://www.browsersync.io). This will reload the server automatically as well as refresh the browser to view live changes.
-Source files (html, css, and js) will not be minified.
+Source files (html, css, and js) will not be minified. LESS files will be compiled into CSS. CSS will be then auto-prefixed for the browsers specified in the config.
 
 * To run in debug mode, execute the following command:
 
@@ -53,7 +53,7 @@ Source files (html, css, and js) will not be minified.
 
 ## Run in Release Mode
 
-All source files will be minified, comments will be stripped, and [Express](http://expressjs.com) will run to serve up the files.
+All source files will be minified, comments will be stripped, images are compressed and [Express](http://expressjs.com) will run to serve up the files.
 
 * To run in debug mode, execute the following command:
 

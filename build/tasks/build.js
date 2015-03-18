@@ -14,7 +14,8 @@ gulp.task('build:dev', function(callback) {
       'config:copy',
       'js:dev',
       'css:dev',
-      'html:dev'
+      'html:dev',
+      'img:dev'
     ],
     callback
   );
@@ -28,7 +29,8 @@ gulp.task('build:release', function(callback) {
       'config:copy',
       'js:release',
       'css:release',
-      'html:release'
+      'html:release',
+      'img:release'
     ],
     callback
   );

@@ -44,6 +44,7 @@ gulp.task('server:dev', ['browser-sync'], function() {
   gulp.watch(config.path.src.js, ['js:dev', browserSync.reload]).on('change', reportChange);
   gulp.watch(config.path.src.html, ['html:dev', browserSync.reload]).on('change', reportChange);
   gulp.watch(config.path.src.less, ['css:dev', browserSync.reload]).on('change', reportChange);
+  gulp.watch(config.path.src.img, ['img:dev', browserSync.reload]).on('change', reportChange);
 });
 
 // Run express server
