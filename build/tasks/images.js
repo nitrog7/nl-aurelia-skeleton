@@ -7,14 +7,14 @@ var pngquant = require('imagemin-pngquant');
 
 // Images
 
-gulp.task('images:dev', function() {
+gulp.task('img:dev', function() {
   return gulp.src(config.path.src.img)
     .pipe(plumber({errorHandler: config.onError}))
-    .pipe(changed(config.path.img))
+    .pipe(changed(config.path.dist.dir))
     .pipe(gulp.dest(config.path.dist.dir));
 });
 
-gulp.task('images:release', function() {
+gulp.task('img:release', function() {
   return gulp.src(config.path.src.img)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(imagemin({

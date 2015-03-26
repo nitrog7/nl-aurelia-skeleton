@@ -1,6 +1,6 @@
 'use strict';
 
-export class Welcome{
+export class Welcome {
   constructor(){
     this.heading = 'Welcome to the Aurelia Navigation App!';
     this.firstName = 'John';

@@ -40,7 +40,7 @@ function reportChange(event){
 // to js, html, and css files and call the
 // reportChange method. Also, by depending on the
 // serve task, it will instantiate a browserSync session
-gulp.task('server:dev', ['browser-sync'], function() {
+gulp.task('default', ['browser-sync'], function() {
   gulp.watch(config.path.src.js, ['js:dev', browserSync.reload]).on('change', reportChange);
   gulp.watch(config.path.src.html, ['html:dev', browserSync.reload]).on('change', reportChange);
   gulp.watch(config.path.src.less, ['css:dev', browserSync.reload]).on('change', reportChange);
@@ -48,7 +48,7 @@ gulp.task('server:dev', ['browser-sync'], function() {
 });
 
 // Run express server
-gulp.task('server:release', ['build:release'], function() {
+gulp.task('release', ['build:release'], function() {
   var app = express();
   var server = require('http').Server(app);
 

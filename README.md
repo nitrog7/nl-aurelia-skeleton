@@ -41,7 +41,7 @@ Source files (html, css, and js) will not be minified. LESS files will be compil
 * To run in debug mode, execute the following command:
 
   ```shell
-  gulp server:dev
+  gulp
   ```
 * Browse to [http://localhost:9000](http://localhost:9000) to see the app. You can make changes in the code found under `src` and the browser should auto-refresh itself as you save files.
 
@@ -58,7 +58,7 @@ All source files will be minified, comments will be stripped, images are compres
 * To run in debug mode, execute the following command:
 
   ```shell
-  gulp server:release
+  gulp release
   ```
 * Browse to [http://localhost:9000](http://localhost:9000) to see the app.
 
