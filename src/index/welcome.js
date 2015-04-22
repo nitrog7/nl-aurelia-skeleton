@@ -1,11 +1,11 @@
 'use strict';
 
+import {computedFrom} from 'aurelia-framework';
+
 export class Welcome {
-  constructor(){
-    this.heading = 'Welcome to the Aurelia Navigation App!';
-    this.firstName = 'John';
-    this.lastName = 'Doe';
-  }
+  heading = 'Welcome to the Aurelia Navigation App!';
+  firstName = 'John';
+  lastName = 'Doe';
 
   get fullName(){
     return `${this.firstName} ${this.lastName}`;
