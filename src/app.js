@@ -13,9 +13,9 @@ export class App {
       config.title = 'Aurelia';
       config.options.pushState = true;
       config.map([
-        { route: ['','welcome'],  moduleId: 'index/welcome',      nav: true, title:'Welcome' },
-        { route: 'flickr',        moduleId: 'index/flickr',       nav: true, title:'Flickr'  },
-        { route: 'child-router',  moduleId: 'index/child-router', nav: true, title:'Child Router' }
+        { route: ['','welcome'],  moduleId: 'views/index/welcome',      nav: true, title:'Welcome' },
+        { route: 'flickr',        moduleId: 'views/index/flickr',       nav: true, title:'Flickr'  },
+        { route: 'child-router',  moduleId: 'views/index/child-router', nav: true, title:'Child Router' }
       ]);
     });
   }

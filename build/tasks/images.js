@@ -11,7 +11,7 @@ gulp.task('img:dev', function() {
   return gulp.src(config.path.src.img)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(changed(config.path.dist.dir))
-    .pipe(gulp.dest(config.path.dist.dir));
+    .pipe(gulp.dest(config.path.dist.img));
 });
 
 gulp.task('img:release', function() {
@@ -22,5 +22,5 @@ gulp.task('img:release', function() {
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
     }))
-    .pipe(gulp.dest(config.path.dist.dir));
+    .pipe(gulp.dest(config.path.dist.img));
 });

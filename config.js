@@ -1,9 +1,9 @@
 System.config({
+  "baseURL": "/",
   "paths": {
     "*": "*.js",
     "github:*": "common/github/*.js",
-    "npm:*": "common/npm/*.js",
-    "app/*": "lib/*.js"
+    "npm:*": "common/npm/*.js"
   }
 });
 

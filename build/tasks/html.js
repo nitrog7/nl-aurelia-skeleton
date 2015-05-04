@@ -10,7 +10,7 @@ var minifyHTML = require('gulp-minify-html');
 gulp.task('html:dev', function() {
   return gulp.src(config.path.src.html)
     .pipe(plumber({errorHandler: config.onError}))
-    .pipe(changed(config.path.src.html, {extension: '.html'}))
+    .pipe(changed(config.path.dist.dir, {extension: '.html'}))
     .pipe(htmlhint(config.htmlhint))
     .pipe(htmlhint.reporter())
     .pipe(gulp.dest(config.path.dist.dir));

@@ -28,8 +28,8 @@ gulp.task('js:dev', function() {
 gulp.task('js:release', function() {
   return gulp.src(config.path.src.js)
     .pipe(plumber({errorHandler: config.onError}))
-    .pipe(jshint({lookup:true}))
-    .pipe(jshint.reporter(stylish))
+    //.pipe(jshint({lookup:true}))
+    //.pipe(jshint.reporter(stylish))
     .pipe(strip())
     .pipe(sourcemaps.init())
     .pipe(babel(assign({}, config.babel, {modules:'system'})))

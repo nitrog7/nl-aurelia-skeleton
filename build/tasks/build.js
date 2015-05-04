@@ -15,7 +15,8 @@ gulp.task('build:dev', function(callback) {
       'js:dev',
       'css:dev',
       'html:dev',
-      'img:dev'
+      'img:dev',
+      'fonts:dev'
     ],
     callback
   );
@@ -30,7 +31,8 @@ gulp.task('build:release', function(callback) {
       'js:release',
       'css:release',
       'html:release',
-      'img:release'
+      'img:release',
+      'fonts:release'
     ],
     callback
   );

@@ -11,10 +11,15 @@ module.exports = {
     src : {
       dir: './src',
       config: './config.js',
-      js: './src/**/*.js',
-      html: './src/**/*.html',
+      js: ['./src/**/*.js', './src/app.js'],
+      html: ['./src/**/*.html', './src/*.html'],
       img: './src/img/**/**.*',
+      fonts: './src/fonts/**/**.*',
       less: [
+        './src/less/common.less',
+        './src/less/core.less'
+      ],
+      lessOutput: [
         './src/less/common.less',
         './src/less/core.less'
       ]
@@ -23,7 +28,9 @@ module.exports = {
     dist: {
       dir: './public',
       css: './public/css',
-      img: './public/img'
+      cssFiles: './public/css/**/**.*',
+      img: './public/img',
+      fonts: './public/fonts'
     },
 
     doc: './doc',
