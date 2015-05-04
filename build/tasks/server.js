@@ -74,7 +74,7 @@ gulp.task('release', ['build:release'], function() {
   app.use(express.static(path.resolve(config.path.dist.dir)));
 
   app.use('/*', function(req, res) {
-    res.sendFile(path.resolve(config.path.dist.dir + config.index));
+    res.sendFile(path.resolve(config.path.dist.dir + '/' + config.index));
   });
 
   server.listen(config.port.release, function() {
