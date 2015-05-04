@@ -1,5 +1,13 @@
 System.config({
   "baseURL": "/",
+  "transpiler": "babel",
+  "babelOptions": {
+    "optional": [
+      "runtime",
+      "es7.decorators",
+      "es7.classProperties"
+    ]
+  },
   "paths": {
     "*": "*.js",
     "github:*": "common/github/*.js",
@@ -15,7 +23,10 @@ System.config({
     "aurelia-framework": "github:aurelia/framework@0.10.0",
     "aurelia-http-client": "github:aurelia/http-client@0.7.0",
     "aurelia-router": "github:aurelia/router@0.7.2",
+    "babel": "npm:babel-core@5.2.9",
+    "babel-runtime": "npm:babel-runtime@5.2.9",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
+    "core-js": "npm:core-js@0.8.4",
     "css": "github:systemjs/plugin-css@0.1.10",
     "font-awesome": "npm:font-awesome@4.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
@@ -229,6 +240,9 @@ System.config({
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:core-js@0.8.4": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-js@0.9.6": {
