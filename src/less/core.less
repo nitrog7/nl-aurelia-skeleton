@@ -12,7 +12,7 @@ body {
     line-height: 72px;
     text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
     text-transform: uppercase;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   .fa-spinner {
@@ -35,6 +35,11 @@ body {
 
 section {
   margin: 0 20px;
+
+  // Animate page transitions
+  &.au-enter-active {
+    animation: fadeInRight 1s;
+  }
 }
 
 .navbar-nav li.loader {
@@ -43,4 +48,47 @@ section {
 
 .pictureDetail {
   max-width: 425px;
+}
+
+.flickr-img {
+  // Animate flickr image entry
+  &.au-enter-active {
+    animation: bounce 1s;
+  }
+
+  & > a > img {
+    width: 260px;
+    height: 180px;
+  }
+}
+
+/* Animation definitions */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0)
+  }
+  100% {
+    opacity: 1;
+    transform: none
+  }
+}
+
+@keyframes bounce {
+  0%, 100%, 20%, 53%, 80% {
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+    transform: translate3d(0, 0, 0)
+  }
+  40%,
+  43% {
+    transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+    transform: translate3d(0, -30px, 0)
+  }
+  70% {
+    transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+    transform: translate3d(0, -15px, 0)
+  }
+  90% {
+    transform: translate3d(0, -4px, 0)
+  }
 }

@@ -1,31 +1,30 @@
-System.register(['aurelia-framework', 'aurelia-router', 'bootstrap', 'bootstrap/css/bootstrap.css!'], function (_export) {
-  var inject, Router, _classCallCheck, App;
+System.register(['bootstrap', 'bootstrap/css/bootstrap.css!'], function (_export) {
+  var _classCallCheck, _createClass, App;
 
   return {
-    setters: [function (_aureliaFramework) {
-      inject = _aureliaFramework.inject;
-    }, function (_aureliaRouter) {
-      Router = _aureliaRouter.Router;
-    }, function (_bootstrap) {}, function (_bootstrapCssBootstrapCss) {}],
+    setters: [function (_bootstrap) {}, function (_bootstrapCssBootstrapCss) {}],
     execute: function () {
       'use strict';
 
       _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-      App = (function () {
-        function App(router) {
-          _classCallCheck(this, _App);
+      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-          this.router = router;
-          this.router.configure(function (config) {
-            config.title = 'Aurelia';
-            config.options.pushState = true;
-            config.map([{ route: ['', 'welcome'], moduleId: 'views/index/welcome', nav: true, title: 'Welcome' }, { route: 'flickr', moduleId: 'views/index/flickr', nav: true, title: 'Flickr' }, { route: 'child-router', moduleId: 'views/index/child-router', nav: true, title: 'Child Router' }]);
-          });
+      App = (function () {
+        function App() {
+          _classCallCheck(this, App);
         }
 
-        var _App = App;
-        App = inject(Router)(App) || App;
+        _createClass(App, [{
+          key: 'configureRouter',
+          value: function configureRouter(config, router) {
+            config.title = 'Aurelia';
+            config.map([{ route: ['', 'welcome'], moduleId: 'views/index/welcome', nav: true, title: 'Welcome' }, { route: 'flickr', moduleId: 'views/index/flickr', nav: true, title: 'Flickr' }, { route: 'child-router', moduleId: 'views/index/child-router', nav: true, title: 'Child Router' }]);
+
+            this.router = router;
+          }
+        }]);
+
         return App;
       })();
 
@@ -33,4 +32,4 @@ System.register(['aurelia-framework', 'aurelia-router', 'bootstrap', 'bootstrap/
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO3VDQVFhLEdBQUc7Ozs7aUNBTlIsTUFBTTs7OEJBQ04sTUFBTTs7O0FBSGQsa0JBQVksQ0FBQzs7OztBQVFBLFNBQUc7QUFDSCxpQkFEQSxHQUFHLENBQ0YsTUFBTSxFQUFFOzs7QUFDbEIsY0FBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7QUFDckIsY0FBSSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsVUFBQSxNQUFNLEVBQUk7QUFDOUIsa0JBQU0sQ0FBQyxLQUFLLEdBQUcsU0FBUyxDQUFDO0FBQ3pCLGtCQUFNLENBQUMsT0FBTyxDQUFDLFNBQVMsR0FBRyxJQUFJLENBQUM7QUFDaEMsa0JBQU0sQ0FBQyxHQUFHLENBQUMsQ0FDVCxFQUFFLEtBQUssRUFBRSxDQUFDLEVBQUUsRUFBQyxTQUFTLENBQUMsRUFBRyxRQUFRLEVBQUUscUJBQXFCLEVBQU8sR0FBRyxFQUFFLElBQUksRUFBRSxLQUFLLEVBQUMsU0FBUyxFQUFFLEVBQzVGLEVBQUUsS0FBSyxFQUFFLFFBQVEsRUFBUyxRQUFRLEVBQUUsb0JBQW9CLEVBQVEsR0FBRyxFQUFFLElBQUksRUFBRSxLQUFLLEVBQUMsUUFBUSxFQUFHLEVBQzVGLEVBQUUsS0FBSyxFQUFFLGNBQWMsRUFBRyxRQUFRLEVBQUUsMEJBQTBCLEVBQUUsR0FBRyxFQUFFLElBQUksRUFBRSxLQUFLLEVBQUMsY0FBYyxFQUFFLENBQ2xHLENBQUMsQ0FBQztXQUNKLENBQUMsQ0FBQztTQUNKOzttQkFaVSxHQUFHO0FBQUgsV0FBRyxHQURmLE1BQU0sQ0FBQyxNQUFNLENBQUMsQ0FDRixHQUFHLEtBQUgsR0FBRztlQUFILEdBQUc7OztxQkFBSCxHQUFHIiwiZmlsZSI6ImFwcC5qcyIsInNvdXJjZVJvb3QiOiIvdW5kZWZpbmVkIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO3FDQUdhLEdBQUc7Ozs7Ozs7Ozs7O0FBQUgsU0FBRztpQkFBSCxHQUFHO2dDQUFILEdBQUc7OztxQkFBSCxHQUFHOztpQkFDQyx5QkFBQyxNQUFNLEVBQUUsTUFBTSxFQUFDO0FBQzdCLGtCQUFNLENBQUMsS0FBSyxHQUFHLFNBQVMsQ0FBQztBQUN6QixrQkFBTSxDQUFDLEdBQUcsQ0FBQyxDQUNULEVBQUUsS0FBSyxFQUFFLENBQUMsRUFBRSxFQUFDLFNBQVMsQ0FBQyxFQUFHLFFBQVEsRUFBRSxxQkFBcUIsRUFBTyxHQUFHLEVBQUUsSUFBSSxFQUFFLEtBQUssRUFBQyxTQUFTLEVBQUUsRUFDNUYsRUFBRSxLQUFLLEVBQUUsUUFBUSxFQUFTLFFBQVEsRUFBRSxvQkFBb0IsRUFBUSxHQUFHLEVBQUUsSUFBSSxFQUFFLEtBQUssRUFBQyxRQUFRLEVBQUUsRUFDM0YsRUFBRSxLQUFLLEVBQUUsY0FBYyxFQUFHLFFBQVEsRUFBRSwwQkFBMEIsRUFBRSxHQUFHLEVBQUUsSUFBSSxFQUFFLEtBQUssRUFBQyxjQUFjLEVBQUUsQ0FDbEcsQ0FBQyxDQUFDOztBQUVILGdCQUFJLENBQUMsTUFBTSxHQUFHLE1BQU0sQ0FBQztXQUN0Qjs7O2VBVlUsR0FBRzs7O3FCQUFILEdBQUciLCJmaWxlIjoiYXBwLmpzIiwic291cmNlUm9vdCI6Ii91bmRlZmluZWQifQ==
