@@ -1,3 +1,21 @@
+### 0.15.1 (2015-07-02)
+
+
+## 0.15.0 (2015-07-02)
+
+
+#### Bug Fixes
+
+* **build:** include source in source maps. resolve #111 ([e6accba4](http://github.com/aurelia/skeleton-navigation/commit/e6accba4a533100f56a7040ff4010390bd9f0bad))
+* **package:** reduce debug requests using core-js override ([cede89f6](http://github.com/aurelia/skeleton-navigation/commit/cede89f6768017b238aac0e73e9bf41d9a502220))
+* **tests:** Fix unit tests ([8abc7741](http://github.com/aurelia/skeleton-navigation/commit/8abc7741c7b64ad0b54d7ef1f14d93bb5c0599cf))
+
+
+#### Features
+
+* **routes:** name all routes ([a3cb19ce](http://github.com/aurelia/skeleton-navigation/commit/a3cb19ce63f9a53c58c36244f9cca20ead54fb32))
+
+
 ## 0.14.0 (2015-06-09)
 
 
@@ -258,3 +276,4 @@
 
 * **package:** update dependencies to latest versions ([77986163](http://github.com/aurelia/skeleton-navigation/commit/779861632b7e48152ce7bed9d0316e90fda2482d))
 * **package:** update dependencies to latest versions ([4f1661dc](http://github.com/aurelia/skeleton-navigation/commit/4f1661dceafe93c8c117133bd07b9edb243b913e))
+
