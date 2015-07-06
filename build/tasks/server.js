@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var config = require('../config');
-var modRewrite = require('connect-modrewrite');
 var express = require('express');
 var path = require('path');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync').create();
+var history = require('connect-history-api-fallback');
 
 // This task utilizes the browsersync plugin
 // to create a dev server instance
@@ -28,22 +28,19 @@ gulp.task('browser-sync', ['build:dev'], function(done) {
   browserSync.instance = browserSync.init(files, {
     open: false,
     port: config.port.dev,
+    ghostMode : false,
     server: {
       startPath: '/',
+      excludedFileTypes: ['woff2'],
       baseDir: config.path.dist.dir,
       index: config.index,
       routes: {
         '/common': config.path.common.dir
       },
-      middleware: [
-        function(req, res, next) {
-          res.setHeader('Access-Control-Allow-Origin', '*');
-          next();
-        },
-        modRewrite([
-          '^[^\\.]*$ /' + config.index + ' [L]'
-        ])
-      ]
+      middleware: [history(), function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }]
     }
   }, done);
 });
@@ -61,7 +58,7 @@ gulp.task('default', ['browser-sync'], function() {
   gulp.watch(config.path.src.js, ['js:dev']).on('change', reportChange);
   gulp.watch(config.path.src.html, ['html:dev']).on('change', reportChange);
   gulp.watch(config.path.src.less, ['css:dev']).on('change', reportChange);
-  gulp.watch(config.path.src.img, ['img:dev']).on('change', reportChange);
+  gulp.watch(config.path.src.img.dir, ['img:dev']).on('change', reportChange);
   gulp.watch(config.path.src.fonts, ['fonts:dev']).on('change', reportChange);
 });
 

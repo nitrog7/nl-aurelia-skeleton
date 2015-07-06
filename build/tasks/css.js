@@ -6,7 +6,7 @@ var autoprefix = require('gulp-autoprefixer');
 
 // CSS
 gulp.task('css:dev', function() {
-  return gulp.src(config.path.src.lessOutput)
+  return gulp.src(config.path.src.lessFiles)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(less())
     .pipe(autoprefix(config.autoprefixer))
@@ -14,7 +14,7 @@ gulp.task('css:dev', function() {
 });
 
 gulp.task('css:release', function() {
-  return gulp.src(config.path.src.lessOutput)
+  return gulp.src(config.path.src.lessFiles)
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(less({compress: true}))
     .pipe(autoprefix(config.autoprefixer))
