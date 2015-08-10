@@ -1,8 +1,7 @@
-node_modules
-jspm_packages
-bower_components
-common
 .idea
 .DS_STORE
-public
-build/reports
+build/reports/
+common/
+coverage/
+node_modules/
+tmp/
