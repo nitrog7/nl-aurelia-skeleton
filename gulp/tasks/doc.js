@@ -15,6 +15,8 @@ gulp.task('doc', ['doc-generate'], () => {
 // uses yui to generate documentation to doc/api.json
 gulp.task('doc-generate', () => {
   return gulp.src(config.path.src.js)
-    .pipe(yuidoc.parser(null, 'api.json'))
+    .pipe(yuidoc.parser(config.yuidoc.parser, 'api.json'))
+    .pipe(yuidoc.reporter())
+    .pipe(yuidoc.generator(config.yuidoc.render))
     .pipe(gulp.dest(config.path.doc));
 });

@@ -51,7 +51,7 @@ Source files (html, css, and js) will not be minified. LESS files will be compil
 > Note: At present there is a bug in the HTMLImports polyfill which only occurs on IE. We have submitted a pull request to the team with the fix. In the mean time, if you want to test on IE, you can work around the issue by explicitly adding a script tag before you load system.js. The script tag should look something like this (be sure to confirm the version number):
 
 ```html
-<script src="jspm_packages/github/webcomponents/webcomponentsjs@0.5.2/HTMLImports.js"></script>
+<script src="common/github/webcomponents/webcomponentsjs@0.5.2/HTMLImports.js"></script>
 ```
 
 ## Run in Release Mode
@@ -63,7 +63,7 @@ All source files will be minified, comments will be stripped, images are compres
   ```shell
   gulp release
   ```
-* Browse to [http://localhost:9000](http://localhost:9000) to see the app.
+* Browse to [http://localhost:8080](http://localhost:8080) to see the app.
 
 ## Configuring Setup
 
@@ -89,22 +89,4 @@ jspm install aurelia-router
 
   ```shell
   karma start
-  ```
-
-## Running The E2E Tests
-Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
-
-1. Place your E2E-Tests into the folder ```test/e2e/src```
-2. Install the necessary webdriver
-
-  ```shell
-  gulp webdriver_update
-  ```
-
-3. Configure the path to the webdriver by opening the file ```protractor.conf.js``` and adjusting the ```seleniumServerJar``` property. Typically its only needed to adjust the version number.
-
-4. Run the E2E-Tests
-
-  ```shell
-  gulp e2e
   ```

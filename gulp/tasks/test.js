@@ -4,7 +4,7 @@ import gulp from 'gulp';
 import config from '../config';
 import plumber from 'gulp-plumber';
 import karma from 'karma';
-import jshint from 'gulp-jshint';
+import eslint from 'gulp-eslint';
 
 // Tests
 // Run all javascript tests
@@ -28,6 +28,5 @@ gulp.task('verify', ['js:karma', 'js:hint']);
 gulp.task('js:hint', () => {
     return gulp.src(config.path.src.js.files)
       .pipe(plumber())
-      .pipe(jshint())
-      .pipe(jshint.reporter('jshint-stylish'));
+      .pipe(eslint.format());
 });

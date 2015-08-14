@@ -8,7 +8,6 @@ import babel from 'gulp-babel';
 import assign from 'object.assign';
 import uglify from 'gulp-uglify';
 import eslint from 'gulp-eslint';
-import shell from 'gulp-shell';
 
 gulp.task('js:dev', () => {
   return gulp.src(config.path.src.js.files)
@@ -43,8 +42,3 @@ gulp.task('js:copy', () => {
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(gulp.dest(config.path.dist.dir));
 });
-
-
-gulp.task('js:bundle', shell.task([
-  'aurelia bundle --force'
-]));

@@ -3,12 +3,13 @@
 module.exports = {
   port: {
     dev: 9000,
-    release: 9000
+    release: 8080
   },
 
   path: {
     src : {
-      dir: './src',
+      dir: 'src',
+      config: 'config.js',
       html: {
         files: 'src/*.html',
         templates: 'src/views/**/*.html',
@@ -50,26 +51,28 @@ module.exports = {
     },
 
     dist: {
-      dir: './dist',
+      dir: 'dist/',
       index: 'index.html',
       build: 'build.js',
-      config: './dist/config.js',
-      views: './dist/views',
-      img: './dist/img',
-      css: './dist/css',
-      fonts: './dist/css/fonts',
-      templates: './dist/views'
+      config: 'dist/config.js',
+      views: 'dist/views/',
+      img: 'dist/img/',
+      css: 'dist/css/',
+      fonts: 'dist/css/fonts/',
+      templates: 'dist/views/'
     },
 
     clean: [
-      './dist/views',
-      './dist/main.js'
+      'dist/views',
+      'dist/main.js'
     ],
 
-    doc: './doc',
+    doc: {
+      dir: 'doc'
+    },
 
     common: {
-      dir: './common'
+      dir: 'common'
     }
   },
 
@@ -79,6 +82,10 @@ module.exports = {
     'last 2 Safari versions',
     'Explorer >= 10'
   ],
+
+  bundle: {
+    name: 'app'
+  },
 
   karma: {
     configFile: __dirname + '/../karma.conf.js'
@@ -118,6 +125,27 @@ module.exports = {
       "es7.decorators",
       "es7.classProperties"
     ]
+  },
+
+  yuidoc: {
+    parser: {
+      project: {
+        name: "YUI Documentation",
+        description: "YUIDoc documentation generated from JavaScript",
+        version: "0.1.0",
+        url: "http://yuilibrary.com/projects/yuidoc",
+        logo: "http://yuilibrary.com/img/yui-logo.png",
+        options: {
+          external: {
+            data: "http://yuilibrary.com/yui/docs/api/data.json"
+          },
+          linkNatives: true,
+          attributesEmit: true,
+          outdir: "docs/api"
+        }
+      }
+    },
+    render: {}
   },
 
   onError: function(err) {

@@ -34,16 +34,15 @@ gulp.task('dev', (done) => {
 var runDevelopment = (done) => {
   return runSequence('clean:dist',
     [
-      'config',
       'html:watch',
       'img:dev',
       'js:watch',
       'css:watch'
     ],
-    'js:bundle',
+    'app:unbundle',
+    'app:config',
     'js:copy',
-    'clean:tmp',
-    'server',
+    'server:dev',
     done);
 };
 
@@ -55,15 +54,15 @@ gulp.task('release', (done) => {
 var runRelease = (done) => {
   return runSequence('clean:dist',
     [
-      'config',
       'html:release',
       'img:release',
       'js:release',
       'css:release'
     ],
-    'js:bundle',
+    'app:bundle',
+    'app:config',
     'js:copy',
     'clean:tmp',
-    'server',
+    'server:release',
     done);
 };

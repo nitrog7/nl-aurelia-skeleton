@@ -27,7 +27,7 @@ function loadAndWaitForAureliaPage(pageUrl) {
   ).then(function(result){
       console.log(result);
       return result;
-  });
+    });
 }
 
 function waitForHttpDone() {
@@ -38,7 +38,7 @@ function waitForHttpDone() {
     '}, false);'
   ).then(function(result){
       return result;
-  });
+    });
 }
 
 /* Plugin hooks */
