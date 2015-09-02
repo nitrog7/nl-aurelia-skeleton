@@ -1,6 +1,6 @@
 {
   "name": "nlAureliaSkeleton",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "Aurelia skeleton for a production style structure.",
   "keywords": [
     "aurelia",
@@ -24,38 +24,33 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "express": "^4.12.3"
+    "aws-sdk": "^2.1.47",
+    "bluebird": "^2.9.34",
+    "forever-monitor": "^1.6.0",
+    "lodash": "^3.10.1",
+    "total.js": "^1.9.0",
+    "universal-analytics": "^0.3.9"
   },
   "devDependencies": {
     "aurelia-cli": "^0.3.1",
-    "aurelia-tools": "^0.1.3",
-    "babel": "^5.8.21",
-    "babel-eslint": "^4.0.5",
-    "bootstrap-sass": "^3.3.5",
-    "browser-sync": "^2.8.2",
-    "connect-history-api-fallback": "^1.1.0",
-    "conventional-changelog": "0.0.11",
-    "del": "^1.1.0",
-    "es5-shim": "^4.1.10",
-    "es6-shim": "^0.28.1",
+    "aurelia-tools": "^0.1.12",
+    "babel": "^5.8.22",
+    "babel-eslint": "^4.1.0",
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
+    "conventional-changelog": "0.4.2",
+    "del": "^1.2.0",
     "font-awesome": "^4.4.0",
     "gulp": "^3.9.0",
-    "gulp-angular-templatecache": "^1.7.0",
     "gulp-autoprefixer": "^2.3.0",
     "gulp-babel": "^5.2.0",
     "gulp-bump": "^0.3.1",
     "gulp-changed": "^1.1.0",
     "gulp-eslint": "^1.0.0",
-    "gulp-flatten": "^0.1.1",
+    "gulp-flatten": "^0.2.0",
     "gulp-help": "^1.2.0",
-    "gulp-htmlhint": "^0.0.9",
+    "gulp-htmlhint": "^0.3.0",
     "gulp-htmlmin": "^1.1.3",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-inject": "^1.5.0",
-    "gulp-inject-string": "0.0.2",
-    "gulp-minify-html": "^1.0.1",
     "gulp-newer": "^0.5.1",
-    "gulp-ng-annotate": "^1.1.0",
     "gulp-plumber": "^0.6.6",
     "gulp-protractor": "^0.0.12",
     "gulp-rename": "^1.2.0",
@@ -66,6 +61,7 @@
     "gulp-sourcemaps": "^1.3.0",
     "gulp-strip-comments": "*",
     "gulp-strip-debug": "^1.0.1",
+    "gulp-symlink": "^2.1.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6",
     "gulp-wrap": "^0.3.0",
@@ -74,7 +70,7 @@
     "http-proxy": "^1.11.1",
     "imagemin-pngquant": "^4.1.2",
     "jasmine-core": "^2.1.3",
-    "jspm": "^0.15.7",
+    "jspm": "^0.16.0-beta.7",
     "jspm-git": "^0.3.3",
     "karma": "^0.13.8",
     "karma-babel-preprocessor": "^5.2.1",
@@ -95,7 +91,7 @@
   "jspm": {
     "format": "system",
     "directories": {
-      "baseUrl": "dist",
+      "baseUrl": "/",
       "lib": "dist",
       "packages": "common"
     },
@@ -113,6 +109,7 @@
       "aurelia-loader": "github:aurelia/loader@^0.8.7",
       "aurelia-loader-default": "github:aurelia/loader-default@^0.9.5",
       "aurelia-logging": "github:aurelia/logging@^0.6.4",
+      "aurelia-logging-console": "github:aurelia/logging-console@^0.6.2",
       "aurelia-metadata": "github:aurelia/metadata@^0.7.3",
       "aurelia-path": "github:aurelia/path@^0.8.1",
       "aurelia-route-recognizer": "github:aurelia/route-recognizer@^0.6.2",
@@ -122,22 +119,21 @@
       "aurelia-templating-binding": "github:aurelia/templating-binding@^0.14.0",
       "aurelia-templating-resources": "github:aurelia/templating-resources@^0.14.0",
       "aurelia-templating-router": "github:aurelia/templating-router@^0.15.0",
-      "bootstrap": "github:twbs/bootstrap@^3.3.5",
-      "clean-css": "npm:clean-css@^3.3.8",
-      "core-js": "npm:core-js@^0.9.4",
+      "bluebird": "npm:bluebird@^2.9.34",
+      "core-js": "npm:core-js@^1.1.3",
       "fetch": "github:github/fetch@^0.9.0",
+      "github/fetch": "github:github/fetch@^0.9.0",
       "jquery": "github:components/jquery@^2.1.4",
-      "lodash": "npm:lodash@^3.10.1"
+      "lodash": "npm:lodash@^3.10.1",
+      "polymer/mutationobservers": "github:polymer/mutationobservers@^0.4.2",
+      "webcomponents": "github:webcomponents/webcomponentsjs@^0.7.12",
+      "webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.12",
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.12"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.21",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^0.9.4"
-    },
-    "overrides": {
-      "npm:core-js@0.9.18": {
-        "main": "client/shim.min"
-      }
+      "core-js": "npm:core-js@^1.1.3"
     }
   }
 }

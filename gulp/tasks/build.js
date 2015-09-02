@@ -11,19 +11,7 @@ let ENV = !!argv.env ? argv.env : 'DEV';
 
 // Start a server and run js/css build and test watchers
 gulp.task('default', (done) => {
-  switch (ENV) {
-    case 'DEV':
-    case 'dev':
-    case 'TEST':
-    case 'test':
-      return runDevelopment(done);
-      break;
-    case 'PROD':
-    case 'prod':
-    case TEST_OPTIMIZE:
-      return runRelease(done);
-      break;
-  }
+  return runDevelopment(done);
 });
 
 // Development Build:
@@ -32,37 +20,53 @@ gulp.task('dev', (done) => {
 });
 
 var runDevelopment = (done) => {
-  return runSequence('clean:dist',
+  return runSequence('clean:dev',
     [
       'html:watch',
-      'img:dev',
       'js:watch',
-      'css:watch'
+      'js:common',
+      'css:watch',
+      'img:dev'
     ],
     'app:unbundle',
-    'app:config',
-    'js:copy',
+    'app:config:dev',
+    'js:copy:dev',
     'server:dev',
     done);
 };
 
 // Release Build:
 gulp.task('release', (done) => {
-  return runRelease(done);
-});
-
-var runRelease = (done) => {
-  return runSequence('clean:dist',
+  return runSequence('clean:release',
     [
       'html:release',
-      'img:release',
       'js:release',
-      'css:release'
+      'css:release',
+      'img:release'
     ],
     'app:bundle',
-    'app:config',
-    'js:copy',
+    'app:config:release',
+    'js:copy:release',
     'clean:tmp',
     'server:release',
     done);
-};
+});
+
+gulp.task('release:build', (done) => {
+  return runSequence('clean:release',
+    [
+      'html:release',
+      'js:release',
+      'css:release',
+      'img:release'
+    ],
+    'app:bundle',
+    'app:config',
+    'js:copy:release',
+    'clean:tmp',
+    done);
+});
+
+gulp.task('release:server', (done) => {
+  return runSequence('server:production', done);
+});

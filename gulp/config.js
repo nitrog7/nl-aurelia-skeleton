@@ -11,23 +11,30 @@ module.exports = {
       dir: 'src',
       config: 'config.js',
       html: {
-        files: 'src/*.html',
-        templates: 'src/views/**/*.html',
-        index: 'src/index.html'
+        files: 'src/views/**/*.html'
       },
       js: {
         files: [
           'src/**/*.js'
         ],
-        copy: [
-          'common/system.js',
-          'common/system.js.map',
-          'common/es6-module-loader.js',
-          'common/es6-module-loader.js.map'
-        ]
+        copy: {
+          base:[
+            'config.js',
+            'common/system.js',
+            'common/system.js.map',
+            'common/es6-module-loader.js',
+            'common/es6-module-loader.js.map'
+          ],
+          misc: [
+            'src/js/**/*.js'
+          ]
+        }
       },
       sass: {
-        files: ['src/scss/**/*.scss'],
+        files: [
+          'src/scss/**/*.scss',
+          'src/views/**/*.scss'
+        ],
         includes: [],
         main: [
           'src/scss/core.scss',
@@ -36,10 +43,8 @@ module.exports = {
       },
       img: {
         files: [
-          'src/views/**/*.png',
-          'src/views/**/*.jpg',
-          'src/views/**/*.gif',
-          'src/views/**/*.svg',
+          'src/img/**/*.{png,jpg,gif,svg}',
+          'src/views/**/*.{png,jpg,gif,svg}',
           'src/favicon.ico'
         ]
       },
@@ -60,6 +65,17 @@ module.exports = {
       css: 'dist/css/',
       fonts: 'dist/css/fonts/',
       templates: 'dist/views/'
+    },
+
+    dev: {
+      dir: 'dev/',
+      index: 'index.html',
+      config: 'dev/config.js',
+      views: 'dev/views/',
+      img: 'dev/img/',
+      css: 'dev/css/',
+      fonts: 'dev/css/fonts/',
+      templates: 'dev/views/'
     },
 
     clean: [

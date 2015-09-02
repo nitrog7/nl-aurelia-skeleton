@@ -8,6 +8,7 @@ import babel from 'gulp-babel';
 import assign from 'object.assign';
 import uglify from 'gulp-uglify';
 import eslint from 'gulp-eslint';
+import symlink from 'gulp-symlink';
 
 gulp.task('js:dev', () => {
   return gulp.src(config.path.src.js.files)
@@ -17,7 +18,24 @@ gulp.task('js:dev', () => {
     .pipe(sourcemaps.init())
     .pipe(babel(assign({}, config.babel, {modules: 'system'})))
     .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/' + config.path.root}))
-    .pipe(gulp.dest(config.path.dist.dir));
+    .pipe(gulp.dest(config.path.dev.dir));
+});
+
+gulp.task('js:copy:dev', ['js:copy:dev:base'], () => {
+  return gulp.src(config.path.src.js.copy.misc, {base:'src/'})
+    .pipe(plumber({errorHandler: config.onError}))
+    .pipe(gulp.dest(config.path.dev.dir));
+});
+
+gulp.task('js:copy:dev:base', () => {
+  return gulp.src(config.path.src.js.copy.base, {base:'.'})
+    .pipe(plumber({errorHandler: config.onError}))
+    .pipe(gulp.dest(config.path.dev.dir));
+});
+
+gulp.task('js:common', function () {
+  return gulp.src('common')
+    .pipe(symlink('dev/common'));
 });
 
 gulp.task('js:watch', ['js:dev'], () => {
@@ -37,8 +55,14 @@ gulp.task('js:release', function () {
     .pipe(gulp.dest(config.path.dist.dir));
 });
 
-gulp.task('js:copy', () => {
-  return gulp.src(config.path.src.js.copy)
+gulp.task('js:copy:release', ['js:copy:release:base'], () => {
+  return gulp.src(config.path.src.js.copy.misc, {base:'src/'})
+    .pipe(plumber({errorHandler: config.onError}))
+    .pipe(gulp.dest(config.path.dist.dir));
+});
+
+gulp.task('js:copy:release:base', () => {
+  return gulp.src(config.path.src.js.copy.base, {base:'.'})
     .pipe(plumber({errorHandler: config.onError}))
     .pipe(gulp.dest(config.path.dist.dir));
 });

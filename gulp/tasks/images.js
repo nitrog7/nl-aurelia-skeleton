@@ -3,25 +3,16 @@
 import gulp from 'gulp';
 import config from '../config';
 import plumber from 'gulp-plumber';
-import newer from 'gulp-newer';
-import imagemin from 'gulp-imagemin';
-import pngquant from 'imagemin-pngquant';
+import flatten from 'gulp-flatten';
 
-// Images
 gulp.task('img:dev', () => {
-  return gulp.src(config.path.src.img.files)
+  return gulp.src(config.path.src.img.files, {base:'src/'})
     .pipe(plumber({errorHandler: config.onError}))
-    .pipe(newer(config.path.dist.img))
-    .pipe(gulp.dest(config.path.dist.img));
+    .pipe(gulp.dest(config.path.dev.dir));
 });
 
 gulp.task('img:release', () => {
-  return gulp.src(config.path.src.img.files)
+  return gulp.src(config.path.src.img.files, {base:'src/'})
     .pipe(plumber({errorHandler: config.onError}))
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(config.path.dist.img));
+    .pipe(gulp.dest(config.path.dist.dir));
 });

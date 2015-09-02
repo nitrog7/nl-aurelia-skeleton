@@ -6,11 +6,18 @@ import del from 'del';
 import vinylPaths from 'vinyl-paths';
 
 // Deletes all files in the output path
-gulp.task('clean:dist', () => {
+gulp.task('clean:dev', () => {
   return gulp.src([
-    config.path.dist.dir+'/*',
-    '!'+config.path.dist.config
-  ], { dot: true })
+    config.path.dev.dir+'/*',
+    '!'+config.path.dev.img
+  ], { dot: true, read: false })
+    .pipe(vinylPaths(del));
+});
+
+gulp.task('clean:release', () => {
+  return gulp.src([
+    config.path.dist.dir+'/*'
+  ], { dot: true, read: false })
     .pipe(vinylPaths(del));
 });
 
