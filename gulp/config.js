@@ -100,7 +100,41 @@ module.exports = {
   ],
 
   bundle: {
-    name: 'app'
+    force: true,
+    packagePath : '.',
+    bundles: {
+      'dist/aurelia': {
+        includes: [
+          'aurelia-bootstrapper',
+          'aurelia-fetch-client',
+          'aurelia-router',
+          'aurelia-animator-css',
+          'github:aurelia/templating-binding',
+          'github:aurelia/templating-resources',
+          'github:aurelia/templating-router',
+          'github:aurelia/loader-default',
+          'github:aurelia/history-browser',
+          'github:aurelia/logging-console'
+        ],
+        options: {
+          inject: true,
+          minify: true
+        }
+      },
+      'dist/core': {
+        includes: [
+          'core-js',
+          'polymer/mutationobservers',
+          'main',
+          'views/**/*.js',
+          'views/**/*.html!text'
+        ],
+        options: {
+          inject: true,
+          minify: true
+        }
+      }
+    }
   },
 
   karma: {

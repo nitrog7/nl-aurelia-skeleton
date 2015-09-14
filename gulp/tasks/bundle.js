@@ -3,16 +3,16 @@
 import gulp from 'gulp';
 import config from '../config';
 import plumber from 'gulp-plumber';
-import shell from 'gulp-shell';
+import {bundle, unbundle} from 'aurelia-bundler';
 import replace from 'gulp-replace';
 
-gulp.task('app:bundle', shell.task([
-  'aurelia bundle --force'
-]));
+gulp.task('app:bundle', function() {
+  return bundle(config.bundle);
+});
 
-gulp.task('app:unbundle', shell.task([
-  'aurelia unbundle'
-]));
+gulp.task('app:unbundle', function() {
+  return unbundle(config.bundle);
+});
 
 gulp.task('app:config:dev', () => {
   return gulp.src(config.path.src.config)
@@ -22,7 +22,6 @@ gulp.task('app:config:dev', () => {
     // Save
     .pipe(gulp.dest(config.path.dev.dir));
 });
-
 
 gulp.task('app:config:release', () => {
   return gulp.src(config.path.src.config)

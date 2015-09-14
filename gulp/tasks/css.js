@@ -13,13 +13,10 @@ gulp.task('css:dev', ['fonts:dev'], () => {
     .pipe(plumber())
     .pipe(newer(config.path.dev.css))
     .pipe(sass({
+      errLogToConsole: true,
       outputStyle: 'expanded',
       includePaths: config.path.src.sass.includes
     }))
-    .on('error', function (err) {
-      sass.logError(err);
-      this.emit('end');
-    })
     .pipe(autoprefixer(config.autoprefixer))
     .pipe(gulp.dest(config.path.dev.css));
 });
@@ -39,13 +36,10 @@ gulp.task('css:release', ['fonts:release'], () => {
   return gulp.src(config.path.src.sass.main)
     .pipe(plumber())
     .pipe(sass({
+      errLogToConsole: true,
       outputStyle: 'compressed',
       includePaths: config.path.src.sass.includes
     }))
-    .on('error', function (err) {
-      sass.logError(err);
-      this.emit('end');
-    })
     .pipe(autoprefixer(config.autoprefixer))
     .pipe(gulp.dest(config.path.dist.css));
 });

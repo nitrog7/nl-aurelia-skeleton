@@ -29,8 +29,8 @@ var runDevelopment = (done) => {
       'img:dev'
     ],
     'app:unbundle',
-    'app:config:dev',
     'js:copy:dev',
+    'app:config:dev',
     'server:dev',
     done);
 };
@@ -45,9 +45,9 @@ gulp.task('release', (done) => {
       'img:release'
     ],
     'app:bundle',
-    'app:config:release',
     'js:copy:release',
     'clean:tmp',
+    'app:config:release',
     'server:release',
     done);
 });
@@ -61,9 +61,9 @@ gulp.task('release:build', (done) => {
       'img:release'
     ],
     'app:bundle',
-    'app:config',
     'js:copy:release',
     'clean:tmp',
+    'app:config:release',
     done);
 });
 
