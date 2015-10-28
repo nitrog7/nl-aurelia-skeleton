@@ -1,6 +1,0 @@
-default-port : 8000
-allow-compile-script : false
-allow-compile-style : true
-
-directory-public: /dist/
-directory-public-virtual: /dist/

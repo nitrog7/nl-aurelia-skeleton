@@ -1,7 +1,17 @@
-@import '../../node_modules/font-awesome/scss/variables.scss';
-@import '../../node_modules/bootstrap/scss/variables';
+// Font-Awesome
+@import '../../node_modules/font-awesome/scss/variables';
+
+$fa-font-path:'../fonts/';
+
+$neutral-lighter: #f1f1f1;
+$neutral-light: #dddddd;
+$neutral: #999999;
+$neutral-dark: #666666;
+$neutral-darker: #333333;
 
 // Bootstrap
+@import '../../node_modules/bootstrap/scss/variables';
+
 $enable-flex: true;
 $screen-xs: 640px;
 $screen-sm: 768px;
@@ -10,15 +20,6 @@ $screen-lg: 1200px;
 
 $font-family-sans-serif: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-family-serif: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
-
-// Font Awesome
-$fa-font-path:'fonts/';
-
-$neutral-lighter: #f1f1f1;
-$neutral-light: #dddddd;
-$neutral: #999999;
-$neutral-dark: #666666;
-$neutral-darker: #333333;
 
 // Colors
 $primary-color: #870013;

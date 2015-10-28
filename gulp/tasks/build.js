@@ -5,35 +5,21 @@ import config from '../config';
 import util from 'gulp-util';
 import runSequence from 'run-sequence';
 
-const argv = util.env;
-
-let ENV = !!argv.env ? argv.env : 'DEV';
-
 // Start a server and run js/css build and test watchers
-gulp.task('default', (done) => {
-  return runDevelopment(done);
-});
 
 // Development Build:
-gulp.task('dev', (done) => {
-  return runDevelopment(done);
-});
-
-var runDevelopment = (done) => {
+gulp.task('default', (done) => {
   return runSequence('clean:dev',
     [
-      'html:watch',
-      'js:watch',
-      'js:common',
-      'css:watch',
-      'img:dev'
+      'css:watch'
     ],
     'app:unbundle',
-    'js:copy:dev',
-    'app:config:dev',
     'server:dev',
     done);
-};
+});
+
+gulp.task('dev', ['default'], () => {});
+
 
 // Release Build:
 gulp.task('release', (done) => {
@@ -47,12 +33,11 @@ gulp.task('release', (done) => {
     'app:bundle',
     'js:copy:release',
     'clean:tmp',
-    'app:config:release',
     'server:release',
     done);
 });
 
-gulp.task('release:build', (done) => {
+gulp.task('release:build', [], (done) => {
   return runSequence('clean:release',
     [
       'html:release',
@@ -63,7 +48,6 @@ gulp.task('release:build', (done) => {
     'app:bundle',
     'js:copy:release',
     'clean:tmp',
-    'app:config:release',
     done);
 });
 

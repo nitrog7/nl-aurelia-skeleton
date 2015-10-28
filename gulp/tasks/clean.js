@@ -7,10 +7,7 @@ import vinylPaths from 'vinyl-paths';
 
 // Deletes all files in the output path
 gulp.task('clean:dev', () => {
-  return gulp.src([
-    config.path.dev.dir+'/*',
-    '!'+config.path.dev.img
-  ], { dot: true, read: false })
+  return gulp.src(config.path.src.clean, { dot: true, read: false })
     .pipe(vinylPaths(del));
 });
 
@@ -22,6 +19,6 @@ gulp.task('clean:release', () => {
 });
 
 gulp.task('clean:tmp', () => {
-  return gulp.src(config.path.clean)
+  return gulp.src(config.path.dist.clean)
     .pipe(vinylPaths(del));
 });

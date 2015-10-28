@@ -3,43 +3,28 @@
 module.exports = {
   port: {
     dev: 9000,
-    release: 8080
+    release: 9000
   },
 
   path: {
     src : {
       dir: 'src',
-      config: 'config.js',
+      config: 'src/config.js',
       html: {
-        files: 'src/views/**/*.html'
+        files: ['src/**/*.html'],
+        index: 'index.html'
       },
       js: {
         files: [
-          'src/**/*.js'
-        ],
-        copy: {
-          base:[
-            'config.js',
-            'common/system.js',
-            'common/system.js.map',
-            'common/es6-module-loader.js',
-            'common/es6-module-loader.js.map'
-          ],
-          misc: [
-            'src/js/**/*.js'
-          ]
-        }
-      },
-      sass: {
-        files: [
-          'src/scss/**/*.scss',
-          'src/views/**/*.scss'
-        ],
-        includes: [],
-        main: [
-          'src/scss/core.scss',
-          'src/scss/common.scss'
+          'src/**/*.js',
+          '!src/config.js'
         ]
+      },
+      css: 'src/css',
+      scss: {
+        main: 'src/scss/core.scss',
+        files: ['src/**/*.scss'],
+        includes: []
       },
       img: {
         files: [
@@ -49,10 +34,15 @@ module.exports = {
         ]
       },
       fonts: {
+        dir: 'src/fonts',
         files: [
           'node_modules/font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}'
         ]
-      }
+      },
+      clean: [
+        'src/css',
+        'src/fonts'
+      ]
     },
 
     dist: {
@@ -60,35 +50,38 @@ module.exports = {
       index: 'index.html',
       build: 'build.js',
       config: 'dist/config.js',
-      views: 'dist/views/',
       img: 'dist/img/',
       css: 'dist/css/',
-      fonts: 'dist/css/fonts/',
-      templates: 'dist/views/'
-    },
-
-    dev: {
-      dir: 'dev/',
-      index: 'index.html',
-      config: 'dev/config.js',
-      views: 'dev/views/',
-      img: 'dev/img/',
-      css: 'dev/css/',
-      fonts: 'dev/css/fonts/',
-      templates: 'dev/views/'
-    },
-
-    clean: [
-      'dist/views',
-      'dist/main.js'
-    ],
-
-    doc: {
-      dir: 'doc'
+      fonts: 'dist/fonts/',
+      clean: [
+        'aurelia.js'
+      ]
     },
 
     common: {
-      dir: 'common'
+      dir:'common',
+      files: [
+        'common/system.js',
+        'aurelia.js'
+      ]
+    },
+
+
+    doc: {
+      dir: 'doc'
+    }
+  },
+
+  scss: {
+    dev: {
+      errLogToConsole: true,
+      outputStyle: 'expanded',
+      includePaths: []
+    },
+    release: {
+      errLogToConsole: true,
+      outputStyle: 'compressed',
+      includePaths: []
     }
   },
 
@@ -103,8 +96,12 @@ module.exports = {
     force: true,
     packagePath : '.',
     bundles: {
-      'dist/aurelia': {
+      'aurelia': {
         includes: [
+          'core-js',
+          'text',
+          'fetch',
+          'aurelia-framework',
           'aurelia-bootstrapper',
           'aurelia-fetch-client',
           'aurelia-router',
@@ -115,19 +112,6 @@ module.exports = {
           'github:aurelia/loader-default',
           'github:aurelia/history-browser',
           'github:aurelia/logging-console'
-        ],
-        options: {
-          inject: true,
-          minify: true
-        }
-      },
-      'dist/core': {
-        includes: [
-          'core-js',
-          'polymer/mutationobservers',
-          'main',
-          'views/**/*.js',
-          'views/**/*.html!text'
         ],
         options: {
           inject: true,
@@ -172,8 +156,8 @@ module.exports = {
     compact: false,
     stage: 2,
     optional: [
-      "es7.decorators",
-      "es7.classProperties"
+      'es7.decorators',
+      'es7.classProperties'
     ]
   },
 

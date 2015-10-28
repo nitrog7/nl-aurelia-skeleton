@@ -1,6 +1,0 @@
-default-port : 8000
-allow-compile-script : false
-allow-compile-style : false
-
-directory-public: /dev/
-directory-public-virtual: /dev/

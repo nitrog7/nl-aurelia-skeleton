@@ -9,37 +9,29 @@ import autoprefixer from 'gulp-autoprefixer';
 import flatten from 'gulp-flatten';
 
 gulp.task('css:dev', ['fonts:dev'], () => {
-  return gulp.src(config.path.src.sass.main)
+  return gulp.src(config.path.src.scss.main)
     .pipe(plumber())
-    .pipe(newer(config.path.dev.css))
-    .pipe(sass({
-      errLogToConsole: true,
-      outputStyle: 'expanded',
-      includePaths: config.path.src.sass.includes
-    }))
+    .pipe(newer(config.path.src.css))
+    .pipe(sass(config.scss.dev))
     .pipe(autoprefixer(config.autoprefixer))
-    .pipe(gulp.dest(config.path.dev.css));
+    .pipe(gulp.dest(config.path.src.css));
 });
 
 gulp.task('fonts:dev', () => {
   return gulp.src(config.path.src.fonts.files)
     .pipe(plumber())
     .pipe(flatten())
-    .pipe(gulp.dest(config.path.dev.fonts));
+    .pipe(gulp.dest(config.path.src.fonts.dir));
 });
 
 gulp.task('css:watch', ['css:dev'], () => {
-  return gulp.watch(config.path.src.sass.files, ['css:dev']);
+  return gulp.watch(config.path.src.scss.files, ['css:dev']);
 });
 
 gulp.task('css:release', ['fonts:release'], () => {
-  return gulp.src(config.path.src.sass.main)
+  return gulp.src(config.path.src.scss.main)
     .pipe(plumber())
-    .pipe(sass({
-      errLogToConsole: true,
-      outputStyle: 'compressed',
-      includePaths: config.path.src.sass.includes
-    }))
+    .pipe(sass(config.scss.release))
     .pipe(autoprefixer(config.autoprefixer))
     .pipe(gulp.dest(config.path.dist.css));
 });

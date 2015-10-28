@@ -3,14 +3,14 @@
 import {inject} from 'aurelia-framework';
 import 'fetch';
 
-export class Users{
+export class Users {
   heading = 'Github Users';
   users = [];
 
-  constructor(){
+  constructor() {
   }
 
-  activate(){
+  activate() {
     return fetch('https://api.github.com/users')
       .then(response => response.json())
       .then(users => this.users = users);
