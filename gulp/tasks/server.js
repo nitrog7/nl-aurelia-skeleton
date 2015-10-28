@@ -28,15 +28,25 @@ gulp.task('server:dev', (done) => {
     }
   }));
 
+  // Falcor Route
   app.use('/model.json', falcorExpress.dataSourceRoute(function(req, res) {
     // Create a Virtual JSON resource with single key ("greeting")
     return new Router([{
       // Match a request for the key "greeting"
-      route: 'welcome',
+      route: 'welcome.["header", "first", "last"]',
 
-      // Respond with a PathValue with the value of "Hello World."
-      get: function() {
-        return {path: ['welcome'], value: 'Welcome to the Aurelia Falcor Navigation App!' };
+      // Respond with a PathValue with the value of "Welcome to the Aurelia Falcor Navigation App!"
+      get: function(pathSet) {
+        let keys = pathSet[1];
+        let example = {
+          header: 'Welcome to the Aurelia Falcor Navigation App!',
+          first: 'Luke',
+          last: 'Skywalker'
+        };
+
+        return keys.map(k => {
+          return { path: [pathSet[0], k], value: example[k] };
+        });
       }
     }]);
   }));
@@ -67,15 +77,25 @@ gulp.task('server:release', (done) => {
   // Static file route
   app.use(express.static(path.resolve(config.path.dist.dir)));
 
+  // Falcor Route
   app.use('/model.json', falcorExpress.dataSourceRoute(function(req, res) {
     // Create a Virtual JSON resource with single key ("greeting")
     return new Router([{
       // Match a request for the key "greeting"
-      route: 'greeting',
+      route: 'welcome.["header", "first", "last"]',
 
-      // Respond with a PathValue with the value of "Hello World."
-      get: function() {
-        return {path: ['greeting'], value: 'Hello World'};
+      // Respond with a PathValue with the value of "Welcome to the Aurelia Falcor Navigation App!"
+      get: function(pathSet) {
+        let keys = pathSet[1];
+        let example = {
+          header: 'Welcome to the Aurelia Falcor Navigation App!',
+          first: 'Luke',
+          last: 'Skywalker'
+        };
+
+        return keys.map(k => {
+          return { path: [pathSet[0], k], value: example[k] };
+        });
       }
     }]);
   }));

@@ -13,12 +13,14 @@ export class Welcome {
     // Create Falcor model
     let model = new falcor.Model({source: new falcor.HttpDataSource('/model.json')});
 
-    // Retrieve the "greeting" key from the root of the Virtual JSON resource
-    model.get('welcome')
+    // Retrieve the "welcome" key from the root of the Virtual JSON resource
+    model.get('welcome.["header", "first", "last"]')
       .then((res) => {
-        let json = res.json;
-        console.log('response', res.json);
-        this.heading = json.welcome;
+        let json = res.json.welcome;
+
+        this.heading = json.header;
+        this.firstName = json.first;
+        this.lastName = json.last;
       });
   }
 
