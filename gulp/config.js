@@ -101,6 +101,7 @@ module.exports = {
           'core-js',
           'text',
           'fetch',
+          'falcor/dist/falcor.browser.min',
           'aurelia-framework',
           'aurelia-bootstrapper',
           'aurelia-fetch-client',

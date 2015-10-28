@@ -23,6 +23,14 @@
     "start": "node server",
     "test": "karma start test/karma.conf.js"
   },
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "falcor-express": "^0.1.2",
+    "falcor-json-graph": "^2.0.0",
+    "falcor-router": "^0.2.10"
+  },
   "devDependencies": {
     "aurelia-bundler": "^0.1.7",
     "aurelia-tools": "^0.1.14",
@@ -86,7 +94,6 @@
     "yargs": "^3.29.0"
   },
   "jspm": {
-    "format": "system",
     "directories": {
       "baseUrl": "src",
       "lib": "src",
@@ -94,6 +101,8 @@
     },
     "configFile": "src/config.js",
     "dependencies": {
+      "Netflix/falcor": "github:Netflix/falcor@^0.1.13",
+      "asap": "github:kriskowal/asap@^2.0.3",
       "aurelia-animator-css": "github:aurelia/animator-css@^0.17.0",
       "aurelia-binding": "github:aurelia/binding@^0.10.0",
       "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.18.0",
@@ -120,9 +129,15 @@
       "aurelia-templating-router": "github:aurelia/templating-router@^0.17.0",
       "bluebird": "npm:bluebird@^2.10.2",
       "core-js": "npm:core-js@^1.2.3",
+      "falcor": "github:Netflix/falcor@^0.1.13",
+      "falcor-http-datasource": "github:Netflix/falcor-http-datasource@^0.1.2",
+      "falcor-json-graph": "github:Netflix/falcor-json-graph@^1.1.5",
+      "falcor-path-syntax": "github:Netflix/falcor-path-syntax@^0.2.3",
+      "falcor-path-utils": "github:Netflix/falcor-path-utils@^0.3.4",
       "fetch": "github:github/fetch@^0.10.0",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.10.1",
+      "rx": "npm:rx@^4.0.6",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {

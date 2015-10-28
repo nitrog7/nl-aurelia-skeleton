@@ -363,19 +363,19 @@ System.config({
       "github:aurelia/templating-router@0.17.0/route-loader",
       "github:aurelia/templating-resources@0.16.1",
       "github:aurelia/templating-resources@0.16.1/aurelia-templating-resources",
-      "github:aurelia/templating-resources@0.16.1/with",
       "github:aurelia/templating-resources@0.16.1/if",
+      "github:aurelia/templating-resources@0.16.1/with",
       "github:aurelia/templating-resources@0.16.1/show",
       "github:aurelia/templating-resources@0.16.1/repeat",
       "github:aurelia/templating-resources@0.16.1/sanitize-html",
-      "github:aurelia/templating-resources@0.16.1/replaceable",
       "github:aurelia/templating-resources@0.16.1/compose",
+      "github:aurelia/templating-resources@0.16.1/replaceable",
       "github:aurelia/templating-resources@0.16.1/global-behavior",
       "github:aurelia/templating-resources@0.16.1/view-spy",
       "github:aurelia/templating-resources@0.16.1/focus",
-      "github:aurelia/templating-resources@0.16.1/compile-spy",
       "github:aurelia/templating-resources@0.16.1/css-resource",
       "github:aurelia/templating-resources@0.16.1/dynamic-element",
+      "github:aurelia/templating-resources@0.16.1/compile-spy",
       "github:aurelia/templating-resources@0.16.1/html-sanitizer",
       "github:aurelia/templating-binding@0.16.1",
       "github:aurelia/templating-binding@0.16.1/aurelia-templating-binding",
@@ -389,6 +389,7 @@ System.config({
       "github:aurelia/pal-browser@0.2.0/aurelia-pal-browser",
       "github:aurelia/framework@0.17.0",
       "github:aurelia/framework@0.17.0/aurelia-framework",
+      "github:Netflix/falcor@0.1.13/dist/falcor.browser.min",
       "github:github/fetch@0.10.0",
       "github:github/fetch@0.10.0/fetch",
       "github:systemjs/plugin-text@0.0.2",
@@ -403,6 +404,7 @@ System.config({
   },
 
   map: {
+    "asap": "github:kriskowal/asap@2.0.3",
     "aurelia-animator-css": "github:aurelia/animator-css@0.17.0",
     "aurelia-binding": "github:aurelia/binding@0.10.2",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.18.0",
@@ -427,13 +429,15 @@ System.config({
     "aurelia-templating-binding": "github:aurelia/templating-binding@0.16.1",
     "aurelia-templating-resources": "github:aurelia/templating-resources@0.16.1",
     "aurelia-templating-router": "github:aurelia/templating-router@0.17.0",
-    "babel": "npm:babel-core@5.8.29",
+    "babel": "npm:babel-core@5.8.30",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "bluebird": "npm:bluebird@2.10.2",
     "core-js": "npm:core-js@1.2.3",
+    "falcor": "github:Netflix/falcor@0.1.13",
     "fetch": "github:github/fetch@0.10.0",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",
+    "rx": "npm:rx@4.0.6",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:aurelia/animator-css@0.17.0": {
       "aurelia-metadata": "github:aurelia/metadata@0.9.0",
@@ -606,6 +610,10 @@ System.config({
     },
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
+    },
+    "npm:rx@4.0.6": {
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

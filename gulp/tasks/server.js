@@ -5,6 +5,8 @@ import config from '../config';
 import path from 'path';
 import express from 'express';
 import compiler from 'express-compile';
+import falcorExpress from 'falcor-express';
+import Router from 'falcor-router';
 
 gulp.task('server:dev', (done) => {
   let app = express();
@@ -12,7 +14,7 @@ gulp.task('server:dev', (done) => {
   let port = process.env.PORT || config.port.dev;
 
   // Aliases
-  app.use('/' + config.path.common.dir, express.static(__dirname + '/../../' +  config.path.common.dir));
+  app.use('/' + config.path.common.dir, express.static(__dirname + '/../../' + config.path.common.dir));
 
   // Static file route
   app.use(express.static(path.resolve(config.path.src.dir)));
@@ -26,6 +28,19 @@ gulp.task('server:dev', (done) => {
     }
   }));
 
+  app.use('/model.json', falcorExpress.dataSourceRoute(function(req, res) {
+    // Create a Virtual JSON resource with single key ("greeting")
+    return new Router([{
+      // Match a request for the key "greeting"
+      route: 'welcome',
+
+      // Respond with a PathValue with the value of "Hello World."
+      get: function() {
+        return {path: ['welcome'], value: 'Welcome to the Aurelia Falcor Navigation App!' };
+      }
+    }]);
+  }));
+
   // Dynamic SPA route
   app.use('*', (req, res) => {
     res.sendFile(path.resolve(config.path.src.dir + '/' + config.path.src.html.index));
@@ -33,13 +48,13 @@ gulp.task('server:dev', (done) => {
 
   // Run server on default port
   server
-    .listen(port, function () {
+    .listen(port, function() {
       console.info('---------------------------------------');
       console.info('Local: http://localhost:%d', server.address().port);
       console.info('---------------------------------------');
       done();
     })
-    .on('error', function (error) {
+    .on('error', function(error) {
       console.info('Server error:', error.message);
     });
 });
@@ -52,6 +67,19 @@ gulp.task('server:release', (done) => {
   // Static file route
   app.use(express.static(path.resolve(config.path.dist.dir)));
 
+  app.use('/model.json', falcorExpress.dataSourceRoute(function(req, res) {
+    // Create a Virtual JSON resource with single key ("greeting")
+    return new Router([{
+      // Match a request for the key "greeting"
+      route: 'greeting',
+
+      // Respond with a PathValue with the value of "Hello World."
+      get: function() {
+        return {path: ['greeting'], value: 'Hello World'};
+      }
+    }]);
+  }));
+
   // Dynamic SPA route
   app.use('*', (req, res) => {
     res.sendFile(path.resolve(config.path.dist.dir + '/' + config.path.src.html.index));
@@ -59,13 +87,13 @@ gulp.task('server:release', (done) => {
 
   // Run server on default port
   server
-    .listen(port, function () {
+    .listen(port, function() {
       console.info('---------------------------------------');
       console.info('Local: http://localhost:%d', server.address().port);
       console.info('---------------------------------------');
       done();
     })
-    .on('error', function (error) {
+    .on('error', function(error) {
       console.info('Server error:', error.message);
     });
 });
