@@ -7,7 +7,7 @@ import minify from 'gulp-htmlmin';
 
 // HTML
 gulp.task('html:release', () => {
-  return gulp.src(config.path.src.html.files)
+  return gulp.src(config.path.src.html)
     .pipe(plumber({errorHandler: util.log}))
     // HTML Hint
     .pipe(htmlhint(config.htmlhint))

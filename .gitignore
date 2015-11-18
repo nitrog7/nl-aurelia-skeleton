@@ -1,7 +1,9 @@
-.idea
 .DS_STORE
+*.log
+.idea
+/node_modules
+/dist
+/dev
 /common
 /coverage
-/node_modules
 /tmp
-/dev

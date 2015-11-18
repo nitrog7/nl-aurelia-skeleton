@@ -5,7 +5,7 @@ import util from 'gulp-util';
 import image from 'gulp-image';
 
 gulp.task('img:release', () => {
-  return gulp.src(config.path.src.img.files, {base:'src/'})
+  return gulp.src(config.path.src.img, {base:config.directories.src})
     .pipe(plumber({errorHandler: util.log}))
     .pipe(image())
     .pipe(gulp.dest(config.directories.dist));

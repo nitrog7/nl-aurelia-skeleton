@@ -28,27 +28,22 @@ config.relative = (...args) => [...args].join('/');
 // Paths
 config.path = {
   src: {
-    html: {
-      files: [
-        config.relative(config.directories.src, '**/*.html')
-      ]
-    },
+    entry: config.absolute(config.directories.src, 'main.js'),
     js: config.relative(config.directories.src, '**/*.js'),
+    html: config.relative(config.directories.src, '**/*.html'),
     css: config.relative(config.directories.src, 'css'),
     scss: {
-      main: config.relative(config.directories.src, 'scss/core.scss'),
+      main: config.relative(config.directories.src, 'styles/core.scss'),
       files: [
         config.relative(config.directories.src, '**/*.scss')
       ],
       includes: []
     },
-    img: {
-      files: [
-        config.relative(config.directories.src, 'img/**/*.{png,jpg,gif,svg}'),
-        config.relative(config.directories.src, 'views/**/*.{png,jpg,gif,svg}'),
-        config.relative(config.directories.src, 'favicon.ico')
-      ]
-    },
+    img: [
+      config.relative(config.directories.src, 'img/**/*.{png,jpg,gif,svg}'),
+      config.relative(config.directories.src, 'views/**/*.{png,jpg,gif,svg}'),
+      config.relative(config.directories.src, 'favicon.ico')
+    ],
     fonts: {
       dir: config.relative(config.directories.src, 'fonts/'),
       files: [
@@ -77,8 +72,8 @@ config.path = {
   },
 
   test: {
-    e2e: './test/e2e/**/*.js',
-    unit: './test/unit/**/*.js'
+    e2e: config.relative(config.directories.test, '/e2e/**/*.js'),
+    unit: config.relative(config.directories.test, '/unit/**/*.spec.js')
   }
 };
 

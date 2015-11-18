@@ -10,7 +10,7 @@ gulp.task('server:dev', (done) => {
   let port = process.env.PORT || config.port.dev;
 
   // Aliases
-  app.use('/' + config.directories.common, express.static(__dirname + '/../../' +  config.directories.common));
+  app.use('/' + config.directories.common, express.static(__dirname + '/../../' + config.directories.common));
 
   // Static file route
   app.use(express.static(config.absolute(config.directories.src)));
@@ -31,14 +31,14 @@ gulp.task('server:dev', (done) => {
 
   // Run server on default port
   server
-    .listen(port, function () {
+    .listen(port, function() {
       util.log('---------------------------------------');
       util.log('Local: http://localhost:%d', server.address().port);
       util.log('---------------------------------------');
       done();
     })
-    .on('error', function (error) {
-      util.log('Server error:', error.message);
+    .on('error', function(error) {
+      util.log('[express]', error.message);
     });
 });
 
@@ -57,13 +57,13 @@ gulp.task('server:release', (done) => {
 
   // Run server on default port
   server
-    .listen(port, function () {
+    .listen(port, function() {
       util.log('---------------------------------------');
       util.log('Local: http://localhost:%d', server.address().port);
       util.log('---------------------------------------');
       done();
     })
-    .on('error', function (error) {
-      util.log('Server error:', error.message);
+    .on('error', function(error) {
+      util.log('[express]', error.message);
     });
 });
