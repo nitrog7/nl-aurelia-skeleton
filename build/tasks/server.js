@@ -1,8 +1,6 @@
-'use strict';
-
 import gulp from 'gulp';
+import util from 'gulp-util';
 import config from '../config';
-import path from 'path';
 import express from 'express';
 import compiler from 'express-compile';
 
@@ -12,14 +10,14 @@ gulp.task('server:dev', (done) => {
   let port = process.env.PORT || config.port.dev;
 
   // Aliases
-  app.use('/' + config.path.common.dir, express.static(__dirname + '/../../' +  config.path.common.dir));
+  app.use('/' + config.directories.common, express.static(__dirname + '/../../' +  config.directories.common));
 
   // Static file route
-  app.use(express.static(path.resolve(config.path.src.dir)));
+  app.use(express.static(config.absolute(config.directories.src)));
 
   // Compile ES6 files
   app.use('*.js', compiler({
-    root: config.path.src.dir,
+    root: config.directories.src,
     paths: [config.path.src.js.files],
     compilerOpts: {
       js: config.babel
@@ -28,19 +26,19 @@ gulp.task('server:dev', (done) => {
 
   // Dynamic SPA route
   app.use('*', (req, res) => {
-    res.sendFile(path.resolve(config.path.src.dir + '/' + config.path.src.html.index));
+    res.sendFile(config.absolute(config.directories.src, config.filenames.index));
   });
 
   // Run server on default port
   server
     .listen(port, function () {
-      console.info('---------------------------------------');
-      console.info('Local: http://localhost:%d', server.address().port);
-      console.info('---------------------------------------');
+      util.log('---------------------------------------');
+      util.log('Local: http://localhost:%d', server.address().port);
+      util.log('---------------------------------------');
       done();
     })
     .on('error', function (error) {
-      console.info('Server error:', error.message);
+      util.log('Server error:', error.message);
     });
 });
 
@@ -50,22 +48,22 @@ gulp.task('server:release', (done) => {
   let port = process.env.PORT || config.port.release;
 
   // Static file route
-  app.use(express.static(path.resolve(config.path.dist.dir)));
+  app.use(express.static(config.absolute(config.directories.dist)));
 
   // Dynamic SPA route
   app.use('*', (req, res) => {
-    res.sendFile(path.resolve(config.path.dist.dir + '/' + config.path.src.html.index));
+    res.sendFile(config.absolute(config.directories.dist, config.filenames.index));
   });
 
   // Run server on default port
   server
     .listen(port, function () {
-      console.info('---------------------------------------');
-      console.info('Local: http://localhost:%d', server.address().port);
-      console.info('---------------------------------------');
+      util.log('---------------------------------------');
+      util.log('Local: http://localhost:%d', server.address().port);
+      util.log('---------------------------------------');
       done();
     })
     .on('error', function (error) {
-      console.info('Server error:', error.message);
+      util.log('Server error:', error.message);
     });
 });

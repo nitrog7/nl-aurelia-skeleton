@@ -1,8 +1,7 @@
-'use strict';
-
 import gulp from 'gulp';
 import config from '../config';
 import plumber from 'gulp-plumber';
+import util from 'gulp-util';
 import karma from 'karma';
 import eslint from 'gulp-eslint';
 
@@ -27,6 +26,6 @@ gulp.task('verify', ['js:karma', 'js:hint']);
 
 gulp.task('js:hint', () => {
     return gulp.src(config.path.src.js.files)
-      .pipe(plumber())
+      .pipe(plumber({errorHandler: util.log}))
       .pipe(eslint.format());
 });

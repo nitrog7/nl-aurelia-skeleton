@@ -3,4 +3,4 @@ require('babel/register');
 
 // All gulp tasks are located in the ./gulp/tasks directory
 // Gulp configuration is ./gulp/config.js
-require('require-dir')('gulp/tasks');
+require('require-dir')('build/tasks');

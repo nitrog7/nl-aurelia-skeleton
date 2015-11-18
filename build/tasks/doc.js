@@ -1,5 +1,3 @@
-'use strict';
-
 import gulp from 'gulp';
 import config from '../config';
 import tools from 'aurelia-tools';
@@ -9,7 +7,7 @@ import yuidoc from 'gulp-yuidoc';
 // and cleans it up for use with aurelia
 // documentation app
 gulp.task('doc', ['doc-generate'], () => {
-  tools.transformAPIModel(config.path.doc);
+  tools.transformAPIModel(config.directories.doc);
 });
 
 // uses yui to generate documentation to doc/api.json
