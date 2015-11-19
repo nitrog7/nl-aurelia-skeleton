@@ -1,6 +1,6 @@
 {
   "name": "nlAureliaSkeleton",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-b1",
   "description": "Aurelia skeleton for a production style structure.",
   "keywords": [
     "aurelia",
@@ -21,9 +21,12 @@
     "type": "git",
     "url": "http://github.com/nitrog7/nl-aurelia-skeleton"
   },
-  "scripts": {
-    "test": "gulp test",
-    "e2e": "gulp serve e2e"
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "connect-history-api-fallback": "^1.1.0",
+    "express": "^4.13.3",
+    "express-compile": "^0.2.0",
+    "history": "^1.12.5"
   },
   "devDependencies": {
     "aurelia-bundler": "^0.1.8",
@@ -34,8 +37,6 @@
     "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
     "conventional-changelog": "^0.5.1",
     "del": "^2.1.0",
-    "express": "^4.13.3",
-    "express-compile": "^0.2.0",
     "font-awesome": "^4.4.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -98,7 +99,6 @@
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1",
       "bluebird": "npm:bluebird@^2.10.2",
       "core-js": "npm:core-js@^1.2.6",
-      "fetch": "github:github/fetch@^0.10.0",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.10.1",
       "text": "github:systemjs/plugin-text@^0.0.3"

@@ -1,7 +1,10 @@
 NL Aurelia Skeleton
 =======================
 
-A simple skeleton to start you off on your Aurelia project.
+A simple skeleton to start you off on your Aurelia project. Uses the following:
+
+- Aurelia (http://aurelia.io)
+- JSPM (http://jspm.io)
 
 Getting Started
 ---------------
@@ -125,6 +128,7 @@ A gulp task is already configured for that. Use the following command to export 
     gulp export
   ```
 The app will be exported into ```export``` directory preserving the directory structure.
+
 #### Configuration
 The configuration is done by ```bundles.json``` file.
 In addition, ```export.json``` file is available for including individual files.
