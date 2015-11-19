@@ -1,5 +1,3 @@
-'use strict';
-
 import {LogManager} from 'aurelia-framework';
 import {ConsoleAppender} from 'aurelia-logging-console';
 
@@ -8,11 +6,8 @@ LogManager.setLevel(LogManager.logLevel.warn); //none, error, warn, info and deb
 
 export function configure(aurelia) {
   aurelia.use
-    .defaultBindingLanguage()
-    .defaultResources()
-    .history()
-    .router()
-    .eventAggregator()
+    .standardConfiguration()
+    .developmentLogging()
     .plugin('aurelia-animator-css');
 
   aurelia.start().then(a => a.setRoot('views/app/index', document.body));

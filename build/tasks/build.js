@@ -1,5 +1,3 @@
-'use strict';
-
 import gulp from 'gulp';
 import config from '../config';
 import util from 'gulp-util';
@@ -9,21 +7,21 @@ import runSequence from 'run-sequence';
 
 // Development Build:
 gulp.task('default', (done) => {
-  return runSequence('clean:dev',
+  return runSequence(
+    'clean:dev',
     [
       'css:watch'
     ],
-    'app:unbundle',
     'server:dev',
     done);
 });
 
-gulp.task('dev', ['default'], () => {});
+gulp.task('dev', ['default']);
 
-
-// Release Build:
-gulp.task('release', (done) => {
-  return runSequence('clean:release',
+// Compile
+gulp.task('compile', [], (done) => {
+  return runSequence(
+    'clean:release',
     [
       'html:release',
       'js:release',
@@ -33,21 +31,14 @@ gulp.task('release', (done) => {
     'app:bundle',
     'js:copy:release',
     'clean:tmp',
-    'server:release',
     done);
 });
 
-gulp.task('release:build', [], (done) => {
-  return runSequence('clean:release',
-    [
-      'html:release',
-      'js:release',
-      'css:release',
-      'img:release'
-    ],
-    'app:bundle',
-    'js:copy:release',
-    'clean:tmp',
+// Release Build:
+gulp.task('release', (done) => {
+  return runSequence(
+    'compile',
+    'server:release',
     done);
 });
 

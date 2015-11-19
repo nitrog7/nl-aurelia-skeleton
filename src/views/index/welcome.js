@@ -1,5 +1,3 @@
-'use strict';
-
 import {computedFrom} from 'aurelia-framework';
 import falcor from 'falcor/dist/falcor.browser.min';
 

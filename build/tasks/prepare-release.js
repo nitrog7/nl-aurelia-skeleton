@@ -1,5 +1,3 @@
-'use strict';
-
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import config from '../config';
@@ -32,9 +30,9 @@ gulp.task('changelog', function(callback) {
   return changelog({
     repository: pkg.repository.url,
     version: pkg.version,
-    file: config.path.doc + '/CHANGELOG.md'
+    file: config.relative(config.directories.doc, 'CHANGELOG.md')
   }, function(err, log) {
-    fs.writeFileSync(config.path.doc + '/CHANGELOG.md', log);
+    fs.writeFileSync(config.relative(config.directories.doc, 'CHANGELOG.md'), log);
   });
 });
 
