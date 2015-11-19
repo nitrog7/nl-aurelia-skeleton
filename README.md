@@ -1,7 +1,7 @@
 NL Aurelia Skeleton
 =======================
 
-A simple skeleton to start you off on your Aurelia project. Uses Falcor for data.
+A simple skeleton to start you off on your Aurelia project.
 
 Getting Started
 ---------------
