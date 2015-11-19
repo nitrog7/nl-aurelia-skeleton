@@ -194,4 +194,9 @@ config.yuidoc = {
   render: {}
 };
 
+// Falcor
+config.falcor = {
+  endpoint: 'model.json'
+};
+
 export default config;

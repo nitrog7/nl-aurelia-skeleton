@@ -2,7 +2,7 @@ import {computedFrom} from 'aurelia-framework';
 import falcor from 'falcor/dist/falcor.browser.min';
 
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App!';
+  heading = 'NL Aurelia Falcor Skeleton';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -11,14 +11,12 @@ export class Welcome {
     // Create Falcor model
     let model = new falcor.Model({source: new falcor.HttpDataSource('/model.json')});
 
-    // Retrieve the "welcome" key from the root of the Virtual JSON resource
-    model.get('welcome.["header", "first", "last"]')
-      .then((res) => {
-        let json = res.json.welcome;
+    this.hello = '';
 
-        this.heading = json.header;
-        this.firstName = json.first;
-        this.lastName = json.last;
+    // Retrieve the "hello" key from the root of the Virtual JSON resource
+    model.get('hello')
+      .then((res) => {
+        this.hello = res.json.hello;
       });
   }
 

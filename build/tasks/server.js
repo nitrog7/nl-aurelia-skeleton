@@ -1,19 +1,43 @@
 import gulp from 'gulp';
 import util from 'gulp-util';
 import config from '../config';
+import appPackage from '../../package.json';
+
+const version = appPackage.version;
+const app = express();
+const server = require('http').Server(app);
+
+// Express
 import express from 'express';
 import compiler from 'express-compile';
+import history from 'connect-history-api-fallback';
+import bodyParser from 'body-parser';
+
+// Falcor
+import falcor from 'falcor';
+import falcorExpress from 'falcor-express';
+import router from '../../model/router';
 
 gulp.task('server:dev', (done) => {
-  let app = express();
-  let server = require('http').Server(app);
-  let port = process.env.PORT || config.port.dev;
+  let port = config.port.dev;
 
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(history());
+
+  console.log('common', config.absolute(config.directories.common));
   // Aliases
-  app.use('/' + config.directories.common, express.static(__dirname + '/../../' + config.directories.common));
+  app.use('/' + config.directories.common, express.static(config.absolute(config.directories.common)));
 
-  // Static file route
+  // Static files
   app.use(express.static(config.absolute(config.directories.src)));
+
+  // Falcor route
+  app.use('/' + config.falcor.endpoint, falcorExpress.dataSourceRoute((req, res) => {
+    return new router('FAKE_USER_SESSION_KEY');
+  }));
 
   // Compile ES6 files
   app.use('*.js', compiler({
@@ -43,12 +67,15 @@ gulp.task('server:dev', (done) => {
 });
 
 gulp.task('server:release', (done) => {
-  let app = express();
-  let server = require('http').Server(app);
-  let port = process.env.PORT || config.port.release;
+  let port = config.port.release;
 
   // Static file route
   app.use(express.static(config.absolute(config.directories.dist)));
+
+  // Falcor route
+  app.use('/' + config.falcor.endpoint, falcorExpress.dataSourceRoute((req, res) => {
+    return new router('FAKE_USER_SESSION_KEY');
+  }));
 
   // Dynamic SPA route
   app.use('*', (req, res) => {
